@@ -15,9 +15,27 @@ public class JankenTest {
 	public void グーの時はチョキに勝つ() {
 		Game game = new Game(1);
 		game.start(new Rock());
-		GameResult currentGameResult = game.currentGameInfo();
+		GameResult currentGameResult = game.currentGameInfo(new Scissors());
 		
 		assertEquals(GameResult.JankenResult.Win, currentGameResult.Result);
+	}
+	
+	@Test
+	public void グーの時はパーに負ける() {
+		Game game = new Game(1);
+		game.start(new Rock());
+		GameResult currentGameResult = game.currentGameInfo(new Paper());
+		
+		assertEquals(GameResult.JankenResult.Lose, currentGameResult.Result);
+	}
+	
+	@Test
+	public void グーの時はグーとあいこになる() {
+		Game game = new Game(1);
+		game.start(new Rock());
+		GameResult currentGameResult = game.currentGameInfo(new Rock());
+		
+		assertEquals(GameResult.JankenResult.Draw, currentGameResult.Result);
 	}
 
 }
