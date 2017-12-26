@@ -36,6 +36,7 @@ public class Game {
 		return new Scissors();
 	}
 
+	// TODO currentGameInfoというメソッド名のわりに、実施はこのメソッド中で対戦処理をしている。。
 	public GameResult currentGameInfo() {
 		// 相手の手の抽選処理
 		Random rnd = new Random();
@@ -53,7 +54,11 @@ public class Game {
 		return new GameResult(this.myHand, this.opponentHand, judge(this.myHand, this.opponentHand));
 	}
 	
-	// 指定された相手の手を用いることができる判定処理動作テスト用メソッド
+	/**
+	 * 指定された相手の手を用いることができる判定処理動作テスト用メソッド
+	 * @param opponentHand 相手の出す手を指定
+	 * @return GameResultオブジェクト
+	 */
 	public GameResult currentGameInfo(Hand opponentHand) {
 		return new GameResult(this.myHand, this.opponentHand, judge(this.myHand, opponentHand));
 	}
