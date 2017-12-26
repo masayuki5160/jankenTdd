@@ -2,6 +2,7 @@ import java.util.Random;
 
 public class Game {
 	
+	// ジャンケンの実施回数を管理(2回勝負、3回勝負など)
 	public int gameCount = 0;
 	public Hand myHand;
 	public Hand opponentHand;
@@ -22,8 +23,9 @@ public class Game {
 	    }
 	}	
 
-	public Game(int i) {
-		this.gameCount = i;
+	public Game(int gameCount) {
+		// TODO 回数を管理しているけど、1回勝負までしか実装していない。。
+		this.gameCount = gameCount;
 	}
 
 	public void start(Hand myHand) {
