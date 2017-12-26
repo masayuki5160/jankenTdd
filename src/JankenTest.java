@@ -62,9 +62,41 @@ public class JankenTest {
 		@Test
 		public void パーの時はグーに勝つ() {
 			game.start(new Paper());
-			GameResult currentGameResult = game.currentGameInfo(new Scissors());
+			GameResult currentGameResult = game.currentGameInfo(new Rock());
+			
+			assertEquals(GameResult.JankenResult.Win, currentGameResult.Result);
+		}
+		
+		@Test
+		public void パーの時はパーとあいこになる() {
+			game.start(new Paper());
+			GameResult currentGameResult = game.currentGameInfo(new Paper());
+			
+			assertEquals(GameResult.JankenResult.Draw, currentGameResult.Result);
+		}
+		
+		@Test
+		public void チョキの時はパーに勝つ() {
+			game.start(new Scissors());
+			GameResult currentGameResult = game.currentGameInfo(new Paper());
+			
+			assertEquals(GameResult.JankenResult.Win, currentGameResult.Result);
+		}
+		
+		@Test
+		public void チョキの時はグーに負ける() {
+			game.start(new Scissors());
+			GameResult currentGameResult = game.currentGameInfo(new Rock());
 			
 			assertEquals(GameResult.JankenResult.Lose, currentGameResult.Result);
+		}
+		
+		@Test
+		public void チョキの時はチョキとあいこになる() {
+			game.start(new Scissors());
+			GameResult currentGameResult = game.currentGameInfo(new Scissors());
+			
+			assertEquals(GameResult.JankenResult.Draw, currentGameResult.Result);
 		}
 	
 	}
