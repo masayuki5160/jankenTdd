@@ -29,72 +29,72 @@ public class JankenTest {
 	
 		@Test
 		public void グーの時はチョキに勝つ() {
-			game.start(new Rock());
-			GameResult currentGameResult = game.currentGameInfo(new Scissors());
+			game.start(new Rock(), new Scissors());
+			GameResult currentGameResult = game.currentGameInfo();
 			
 			assertEquals(GameResult.JankenResult.Win, currentGameResult.Result);
 		}
 		
 		@Test
 		public void グーの時はパーに負ける() {
-			game.start(new Rock());
-			GameResult currentGameResult = game.currentGameInfo(new Paper());
+			game.start(new Rock(), new Paper());
+			GameResult currentGameResult = game.currentGameInfo();
 			
 			assertEquals(GameResult.JankenResult.Lose, currentGameResult.Result);
 		}
 		
 		@Test
 		public void グーの時はグーとあいこになる() {
-			game.start(new Rock());
-			GameResult currentGameResult = game.currentGameInfo(new Rock());
+			game.start(new Rock(), new Rock());
+			GameResult currentGameResult = game.currentGameInfo();
 			
 			assertEquals(GameResult.JankenResult.Draw, currentGameResult.Result);
 		}
 		
 		@Test
 		public void パーの時はチョキに負ける() {
-			game.start(new Paper());
-			GameResult currentGameResult = game.currentGameInfo(new Scissors());
+			game.start(new Paper(), new Scissors());
+			GameResult currentGameResult = game.currentGameInfo();
 			
 			assertEquals(GameResult.JankenResult.Lose, currentGameResult.Result);
 		}
 		
 		@Test
 		public void パーの時はグーに勝つ() {
-			game.start(new Paper());
-			GameResult currentGameResult = game.currentGameInfo(new Rock());
+			game.start(new Paper(), new Rock());
+			GameResult currentGameResult = game.currentGameInfo();
 			
 			assertEquals(GameResult.JankenResult.Win, currentGameResult.Result);
 		}
 		
 		@Test
 		public void パーの時はパーとあいこになる() {
-			game.start(new Paper());
-			GameResult currentGameResult = game.currentGameInfo(new Paper());
+			game.start(new Paper(), new Paper());
+			GameResult currentGameResult = game.currentGameInfo();
 			
 			assertEquals(GameResult.JankenResult.Draw, currentGameResult.Result);
 		}
 		
 		@Test
 		public void チョキの時はパーに勝つ() {
-			game.start(new Scissors());
-			GameResult currentGameResult = game.currentGameInfo(new Paper());
+			game.start(new Scissors(), new Paper());
+			GameResult currentGameResult = game.currentGameInfo();
 			
 			assertEquals(GameResult.JankenResult.Win, currentGameResult.Result);
 		}
 		
 		@Test
 		public void チョキの時はグーに負ける() {
-			game.start(new Scissors());
-			GameResult currentGameResult = game.currentGameInfo(new Rock());
+			game.start(new Scissors(), new Rock());
+			GameResult currentGameResult = game.currentGameInfo();
 			
 			assertEquals(GameResult.JankenResult.Lose, currentGameResult.Result);
 		}
 		
 		@Test
 		public void チョキの時はチョキとあいこになる() {
-			game.start(new Scissors());
-			GameResult currentGameResult = game.currentGameInfo(new Scissors());
+			game.start(new Scissors(), new Scissors());
+			GameResult currentGameResult = game.currentGameInfo();
 			
 			assertEquals(GameResult.JankenResult.Draw, currentGameResult.Result);
 		}

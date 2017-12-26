@@ -4,8 +4,9 @@ public class Game {
 	
 	// ジャンケンの実施回数を管理(2回勝負、3回勝負など)
 	public int gameCount = 0;
-	public Hand myHand;
-	public Hand opponentHand;
+	private Hand myHand;
+	private Hand opponentHand;
+	private GameResult currentGameResult; 
 	
 	public enum Hands {
 		Rock(1),
@@ -30,14 +31,7 @@ public class Game {
 
 	public void start(Hand myHand) {
 		this.myHand = myHand;
-	}
-
-	public Hand currentOpponentHand() {
-		return new Scissors();
-	}
-
-	// TODO currentGameInfoというメソッド名のわりに、実施はこのメソッド中で対戦処理をしている。。
-	public GameResult currentGameInfo() {
+		
 		// 相手の手の抽選処理
 		Random rnd = new Random();
 		int rndOpponetHandInt = rnd.nextInt(3) + 1;
@@ -51,16 +45,25 @@ public class Game {
 			// TODO 例外処理
 		}
 		
-		return new GameResult(this.myHand, this.opponentHand, judge(this.myHand, this.opponentHand));
+		// ジャンケンの実施と結果の格納
+		this.currentGameResult = new GameResult(this.myHand, this.opponentHand, judge(this.myHand, this.opponentHand));
 	}
 	
 	/**
-	 * 指定された相手の手を用いることができる判定処理動作テスト用メソッド
-	 * @param opponentHand 相手の出す手を指定
-	 * @return GameResultオブジェクト
+	 * 判定処理の動作テスト用のメソッド
+	 * @param myHand 自分の手
+	 * @param opponentHand 相手の手
 	 */
-	public GameResult currentGameInfo(Hand opponentHand) {
-		return new GameResult(this.myHand, this.opponentHand, judge(this.myHand, opponentHand));
+	public void start(Hand myHand, Hand opponentHand) {
+		this.myHand = myHand;
+		this.opponentHand = opponentHand;
+		
+		// ジャンケンの実施と結果の格納
+		this.currentGameResult = new GameResult(this.myHand, this.opponentHand, judge(this.myHand, this.opponentHand));		
+	}
+
+	public GameResult currentGameInfo() {
+		return this.currentGameResult;
 	}
 	
 	// ジャンケンの勝敗を判定する
